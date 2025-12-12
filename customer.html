@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Welcome, {{ user.name }}!</h2>
+
+<div class="row g-4">
+
+    <!-- Profile Info -->
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4 text-center">
+            <i class="bi bi-person-circle" style="font-size:3rem;"></i>
+            <h4 class="mt-3">My Profile</h4>
+            <p><strong>User ID:</strong> {{ user.id }}</p>
+            <p><strong>Role:</strong> Customer</p>
+        </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="col-md-4">
+        <a href="/order_history" class="text-decoration-none">
+            <div class="card shadow-sm p-4 text-center amazon-card">
+                <i class="bi bi-card-checklist" style="font-size:3rem;"></i>
+                <h4 class="mt-3">My Orders</h4>
+            </div>
+        </a>
+    </div>
+
+    <!-- Browse -->
+    <div class="col-md-4">
+        <a href="/browse" class="text-decoration-none">
+            <div class="card shadow-sm p-4 text-center amazon-card">
+                <i class="bi bi-bag" style="font-size:3rem;"></i>
+                <h4 class="mt-3">Browse Products</h4>
+            </div>
+        </a>
+    </div>
+
+    <!-- Cart -->
+    <div class="col-md-4">
+        <a href="/cart" class="text-decoration-none">
+            <div class="card shadow-sm p-4 text-center amazon-card">
+                <i class="bi bi-cart" style="font-size:3rem;"></i>
+                <h4 class="mt-3">My Cart</h4>
+            </div>
+        </a>
+    </div>
+
+    <!-- Logout -->
+    <div class="col-md-4">
+        <a href="/logout" class="text-decoration-none">
+            <div class="card shadow-sm p-4 text-center amazon-card bg-danger text-white">
+                <i class="bi bi-box-arrow-right" style="font-size:3rem;"></i>
+                <h4 class="mt-3">Logout</h4>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Revenue Report</h2>
+
+{% if orders|length == 0 %}
+<div class="alert alert-info">No orders have been placed yet.</div>
+{% else %}
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Total ($)</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for o in orders %}
+        <tr>
+            <td>{{ o.id }}</td>
+            <td>{{ o.customer_name }}</td>
+            <td class="text-success fw-bold">$ {{ "%.2f"|format(o.total) }}</td>
+            <td>{{ o.status }}</td>
+            <td>{{ o.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+<a href="/admin" class="btn amazon-btn mt-3">Back to Dashboard</a>
+
+{% endblock %}

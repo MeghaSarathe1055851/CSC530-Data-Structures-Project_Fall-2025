@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3">Browse Products</h2>
+
+<!-- ================= FILTER BAR (SEARCH + SORT + PRICE RANGE) ================= -->
+<form method="GET" action="/browse" class="row g-3 mb-4">
+
+    <!-- Search -->
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control"
+                   placeholder="Search products..."
+                   value="{{ request.args.get('query', '') }}">
+            <button class="btn amazon-btn" formaction="/search">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sort Dropdown -->
+    <div class="col-md-3">
+        <div class="input-group">
+            <label class="input-group-text">Sort</label>
+            <select name="sort" class="form-select">
+                <option value="">None</option>
+                <option value="price" {% if request.args.get('sort')=='price' %}selected{% endif %}>
+                    Price: Low to High
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Min Price -->
+    <div class="col-md-2">
+        <input type="number" step="0.01" min="0"
+               name="min_price"
+               value="{{ min_price }}"
+               class="form-control"
+               placeholder="Min Price">
+    </div>
+
+    <!-- Max Price -->
+    <div class="col-md-2">
+        <input type="number" step="0.01" min="0"
+               name="max_price"
+               value="{{ max_price }}"
+               class="form-control"
+               placeholder="Max Price">
+    </div>
+
+    <!-- Apply Filters -->
+    <div class="col-md-1">
+        <button class="btn amazon-btn w-100" type="submit">Go</button>
+    </div>
+
+</form>
+
+<hr>
+
+<!-- ================= PRODUCT CARDS ================= -->
+<div class="row g-4">
+
+    {% for p in products %}
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+
+            <!-- Image Placeholder -->
+            <img src="https://via.placeholder.com/300x200?text=Product+Image"
+                 class="card-img-top" alt="Product Image">
+
+            <div class="card-body d-flex flex-column">
+
+                <h5 class="card-title">{{ p.name }}</h5>
+                <p class="text-muted mb-1">{{ p.category }}</p>
+                <h6 class="text-success mb-2">$ {{ "%.2f"|format(p.price) }}</h6>
+
+                {% if p.quantity > 0 %}
+                    <p class="text-secondary">In Stock: {{ p.quantity }}</p>
+                {% else %}
+                    <p class="text-danger fw-bold">Out of Stock</p>
+                {% endif %}
+
+                <div class="mt-auto">
+
+                    <!-- Add to Cart -->
+                    <form method="POST" action="/cart/add" class="mb-2">
+                        <input type="hidden" name="product_id" value="{{ p.id }}">
+                        <div class="input-group">
+                            <input type="number" name="quantity" value="1" min="1"
+                                   class="form-control"
+                                   {% if p.quantity == 0 %}disabled{% endif %}>
+                            <button class="btn amazon-btn" type="submit"
+                                    {% if p.quantity == 0 %}disabled{% endif %}>
+                                <i class="bi bi-cart-plus"></i> Add
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

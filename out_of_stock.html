@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Out of Stock Products</h2>
+
+<a href="/admin" class="btn amazon-btn mb-3">← Back to Dashboard</a>
+
+{% if products|length == 0 %}
+<div class="alert alert-info">
+    No products are out of stock.
+</div>
+{% else %}
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Qty</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.category }}</td>
+            <td class="text-danger fw-bold">{{ p.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+{% endblock %}

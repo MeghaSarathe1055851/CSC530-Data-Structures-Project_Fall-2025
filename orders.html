@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">All Orders</h2>
+
+{% if orders|length == 0 %}
+<div class="alert alert-info">
+    No orders have been placed yet.
+</div>
+{% else %}
+
+<div class="row g-4">
+
+    {% for o in orders %}
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+
+            <div class="card-header amazon-nav text-white">
+                <h5 class="mt-1">Order #{{ o.id }}</h5>
+            </div>
+
+            <div class="card-body">
+
+                <!-- Customer -->
+                <p>
+                    <strong>Customer:</strong>
+                    {{ users[o.customer_id].name }} (ID: {{ o.customer_id }})
+                </p>
+
+                <!-- Status -->
+                <p>
+                    <strong>Status:</strong>
+                    {% if o.status == "placed" %}
+                        <span class="badge bg-secondary">Placed</span>
+                    {% elif o.status == "processed" %}
+                        <span class="badge bg-warning text-dark">Processed</span>
+                    {% elif o.status == "shipped" %}
+                        <span class="badge bg-primary">Shipped</span>
+                    {% elif o.status == "delivered" %}
+                        <span class="badge bg-success">Delivered</span>
+                    {% endif %}
+                </p>
+
+                <!-- Timestamp -->
+                <p><strong>Ordered On:</strong> {{ o.timestamp }}</p>
+
+                <!-- Address -->
+                <p><strong>Shipping Address:</strong> {{ o.address }}</p>
+
+                <!-- Total -->
+                <h5 class="text-success mt-3">Total: $ {{ "%.2f"|format(o.total) }}</h5>
+
+                <hr>
+
+                <!-- View Items Button -->
+                <button class="btn btn-outline-secondary w-100 mb-3"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#items{{ o.id }}">
+                    View Order Items
+                </button>
+
+                <!-- Collapsible Order Items -->
+                <div class="collapse" id="items{{ o.id }}">
+                    <ul class="list-group">
+
+                        {% for pid, qty in o['items'].items() %}
+                        {% set product = products.get(pid) %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>
+                                <strong>
+                                    {% if product %}
+                                        {{ product.name }}
+                                    {% else %}
+                                        (Deleted Product)
+                                    {% endif %}
+                                </strong>
+
+                                <small class="text-muted d-block">
+                                    Category:
+                                    {% if product %}
+                                        {{ product.category }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </small>
+                            </span>
+
+                            <span>Qty: {{ qty }}</span>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+                <hr>
+
+                <!-- UPDATE STATUS FORM -->
+                <form method="POST" action="/admin/update_order_status" class="d-flex gap-2">
+                    <input type="hidden" name="order_id" value="{{ o.id }}">
+
+                    <select name="status" class="form-select">
+                        <option value="placed" {% if o.status=='placed' %}selected{% endif %}>Placed</option>
+                        <option value="processed" {% if o.status=='processed' %}selected{% endif %}>Processed</option>
+                        <option value="shipped" {% if o.status=='shipped' %}selected{% endif %}>Shipped</option>
+                        <option value="delivered" {% if o.status=='delivered' %}selected{% endif %}>Delivered</option>
+                    </select>
+
+                    <button type="submit" class="btn amazon-btn">Update</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}

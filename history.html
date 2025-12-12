@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Your Orders</h2>
+
+{% if orders|length == 0 %}
+<div class="alert alert-info">
+    You have not placed any orders yet.
+</div>
+<a href="/browse" class="btn amazon-btn">Start Shopping</a>
+
+{% else %}
+
+<div class="row g-4">
+
+    {% for o in orders %}
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+
+            <div class="card-header amazon-nav text-white">
+                <h5 class="mt-1">Order #{{ o.id }}</h5>
+            </div>
+
+            <div class="card-body">
+
+                <!-- Status -->
+                <p>
+                    <strong>Status:</strong>
+                    {% if o.status == "placed" %}
+                        <span class="badge bg-secondary">Placed</span>
+                    {% elif o.status == "processed" %}
+                        <span class="badge bg-warning text-dark">Processed</span>
+                    {% elif o.status == "shipped" %}
+                        <span class="badge bg-primary">Shipped</span>
+                    {% elif o.status == "delivered" %}
+                        <span class="badge bg-success">Delivered</span>
+                    {% endif %}
+                </p>
+
+                <!-- Timestamp -->
+                <p><strong>Ordered On:</strong> {{ o.timestamp }}</p>
+
+                <!-- Address -->
+                <p><strong>Shipping Address:</strong> {{ o.address }}</p>
+
+                <!-- Total -->
+                <h5 class="text-success mt-3">Total: $ {{ "%.2f"|format(o.total) }}</h5>
+
+                <hr>
+
+                <!-- View Items Button -->
+                <button class="btn btn-outline-secondary w-100"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#items{{ o.id }}">
+                    View Items
+                </button>
+
+                <!-- Collapsible Items -->
+                <div class="collapse mt-3" id="items{{ o.id }}">
+                    <ul class="list-group">
+
+                        {% for pid, qty in o['items'].items() %}
+                        {% set product = products.get(pid) %}
+
+                        <li class="list-group-item">
+
+                            <div class="d-flex justify-content-between align-items-start">
+
+                                <div>
+                                    <strong>
+                                        {% if product %}
+                                            {{ product.name }}
+                                        {% else %}
+                                            (Deleted Product)
+                                        {% endif %}
+                                    </strong>
+
+                                    <small class="text-muted d-block">
+                                        Category:
+                                        {% if product %}
+                                            {{ product.category }}
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </small>
+
+                                    <small class="text-muted d-block">Qty: {{ qty }}</small>
+                                </div>
+
+                            </div>
+
+                            <!-- ===================== REVIEW BOX FOR DELIVERED ITEMS ===================== -->
+                            {% if o.status == "delivered" and product %}
+                            <form method="POST" action="/add_review" class="mt-2">
+                                <input type="hidden" name="product_id" value="{{ pid }}">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" name="review" class="form-control"
+                                           placeholder="Write a review...">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            {% endif %}
+                            <!-- =========================================================================== -->
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}

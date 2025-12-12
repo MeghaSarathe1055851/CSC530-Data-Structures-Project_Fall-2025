@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+
+        <div class="card shadow">
+            <div class="card-header text-center amazon-nav text-white">
+                <h4 class="mt-2">Login</h4>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">User ID (4-digit)</label>
+                        <input type="number" name="user_id" class="form-control" required min="1000" max="9999">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn amazon-btn w-100">Login</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="/register" class="text-decoration-none">New user? Register here</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

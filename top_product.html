@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Top Selling Product</h2>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h4>{{ product.name }}</h4>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Price:</strong> ${{ "%.2f"|format(product.price) }}</p>
+    <p><strong>Total Units Sold:</strong> {{ total_sold }}</p>
+</div>
+
+<h4>Orders Containing This Product</h4>
+<hr>
+
+{% for oid, o in orders.items() %}
+    {% if product.id in o['items'] %}
+        <div class="card p-3 shadow-sm mb-3">
+            <p><strong>Order ID:</strong> {{ oid }}</p>
+            <p><strong>Customer:</strong> {{ users[o.customer_id].name }}</p>
+            <p><strong>Quantity Sold:</strong> {{ o['items'][product.id] }}</p>
+            <p><strong>Date:</strong> {{ o.timestamp }}</p>
+        </div>
+    {% endif %}
+{% endfor %}
+
+<a href="/admin" class="btn amazon-btn mt-3">Back to Dashboard</a>
+
+{% endblock %}
