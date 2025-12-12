@@ -1,0 +1,209 @@
+{
+    "30001": {
+        "id": "30001",
+        "name": "Samsung LED TV 43 inch",
+        "category": "Electronics",
+        "price": 399.99,
+        "quantity": 9,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "30002": {
+        "id": "30002",
+        "name": "Apple iPhone Charger",
+        "category": "Electronics",
+        "price": 19.99,
+        "quantity": 28,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "30003": {
+        "id": "30003",
+        "name": "Stainless Steel Cookware Set",
+        "category": "Home & Kitchen",
+        "price": 89.5,
+        "quantity": 15,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "30004": {
+        "id": "30004",
+        "name": "Yoga Mat - Blue",
+        "category": "Sports & Fitness",
+        "price": 25.0,
+        "quantity": 40,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "86879": {
+        "id": "86879",
+        "name": "Baby Crib Wooden",
+        "category": "Baby",
+        "price": 129.0,
+        "quantity": 11,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "68964": {
+        "id": "68964",
+        "name": "JBL Bluetooth Speaker",
+        "category": "Appliances",
+        "price": 120.0,
+        "quantity": 15,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "21306": {
+        "id": "21306",
+        "name": "Sony Headphones",
+        "category": "Appliances",
+        "price": 40.0,
+        "quantity": 20,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "13212": {
+        "id": "13212",
+        "name": "Lenovo ThinkPad Laptop",
+        "category": "Computers",
+        "price": 400.0,
+        "quantity": 0,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "13538": {
+        "id": "13538",
+        "name": "Glass Water Bottle Set",
+        "category": "Home & Kitchen",
+        "price": 50.0,
+        "quantity": 29,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "78672": {
+        "id": "78672",
+        "name": "Nonstick Fry Pan",
+        "category": "Home & Kitchen",
+        "price": 35.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "10291": {
+        "id": "10291",
+        "name": "Lipstick",
+        "category": "Beauty",
+        "price": 10.0,
+        "quantity": 14,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "27826": {
+        "id": "27826",
+        "name": "Mac Foundation",
+        "category": "Beauty",
+        "price": 80.0,
+        "quantity": 5,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "88430": {
+        "id": "88430",
+        "name": "Rice",
+        "category": "Grocery & Household Essentials",
+        "price": 27.0,
+        "quantity": 20,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "58840": {
+        "id": "58840",
+        "name": "All Purpose Flour",
+        "category": "Grocery & Household Essentials",
+        "price": 10.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "17885": {
+        "id": "17885",
+        "name": "Punching Machiene",
+        "category": "Office Products",
+        "price": 20.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "51865": {
+        "id": "51865",
+        "name": "Stapler",
+        "category": "Office Products",
+        "price": 5.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "37670": {
+        "id": "37670",
+        "name": "Chair",
+        "category": "Beauty",
+        "price": 15.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "12757": {
+        "id": "12757",
+        "name": "Table",
+        "category": "Furniture",
+        "price": 20.0,
+        "quantity": 11,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "12073": {
+        "id": "12073",
+        "name": "Pet Bowl",
+        "category": "Pet Supplies",
+        "price": 10.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "64348": {
+        "id": "64348",
+        "name": "Pedigree",
+        "category": "Pet Supplies",
+        "price": 15.0,
+        "quantity": 9,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "48454": {
+        "id": "48454",
+        "name": "Barbie Doll Set",
+        "category": "Toys",
+        "price": 15.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "45132": {
+        "id": "45132",
+        "name": "Apple MacBook Air",
+        "category": "Computers",
+        "price": 900.0,
+        "quantity": 15,
+        "reviews": [],
+        "visible_to_customers": true
+    },
+    "19346": {
+        "id": "19346",
+        "name": "Barbie Doll Set",
+        "category": "Toys",
+        "price": 15.0,
+        "quantity": 10,
+        "reviews": [],
+        "visible_to_customers": true
+    }
+}

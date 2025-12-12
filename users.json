@@ -1,0 +1,76 @@
+{
+    "1001": {
+        "id": "1001",
+        "name": "Admin User",
+        "role": "admin",
+        "password": "admin123",
+        "order_history": []
+    },
+    "2001": {
+        "id": "2001",
+        "name": "Test Customer",
+        "role": "customer",
+        "password": "test123",
+        "order_history": []
+    },
+    "2002": {
+        "id": "2002",
+        "name": "Megha Sarathe",
+        "role": "customer",
+        "password": "megha123",
+        "order_history": []
+    },
+    "1200": {
+        "id": "1200",
+        "name": "Megha Sarathe",
+        "role": "admin",
+        "password": "megha",
+        "order_history": []
+    },
+    "1500": {
+        "id": "1500",
+        "name": "James ciao",
+        "role": "customer",
+        "password": "james",
+        "order_history": [
+            "863972",
+            "114010",
+            "384583",
+            "141076"
+        ]
+    },
+    "1600": {
+        "id": "1600",
+        "name": "Neha Sarathe",
+        "role": "customer",
+        "password": "neha",
+        "order_history": [
+            "724578"
+        ]
+    },
+    "1000": {
+        "id": "1000",
+        "name": "Elon musk",
+        "role": "customer",
+        "password": "elon",
+        "order_history": [
+            "693732"
+        ]
+    },
+    "1400": {
+        "id": "1400",
+        "name": "Jacob s",
+        "role": "customer",
+        "password": "jacob",
+        "order_history": [
+            "838016"
+        ]
+    },
+    "1900": {
+        "id": "1900",
+        "name": "megha",
+        "role": "admin",
+        "password": "megha",
+        "order_history": []
+    }
+}
